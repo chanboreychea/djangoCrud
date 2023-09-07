@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+
+{% block title %}
+  Show Category
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <!-- Horizontal Form -->
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title"><a href="/categories/index" class="btn btn-default">Cancel</a></h3>
+          </div>
+
+          <form class="form-horizontal">
+            <div class="box-body">
+              <div class="form-group">
+                <label for="inputname" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                  <input type="text" value="{{ category.name }}" name="txtCategoryName" class="form-control" id="inputname" placeholder="Category Name" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputcreateby" class="col-sm-2 control-label">CreateBy</label>
+                <div class="col-sm-10">
+                  <input type="text" value="{{ category.createBy }}" name="txtCreateBy" class="form-control" id="inputcreateby" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputupdateby" class="col-sm-2 control-label">UpdateBy</label>
+                <div class="col-sm-10">
+                  <input type="text" value="{{ category.updateBy }}" name="txtUpdateBy" class="form-control" id="inputupdateby" />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </section>
+{% endblock %}
