@@ -15,8 +15,10 @@ def index(request):
 
 @require_POST
 def search(request):
-    category = Category.objects.filter(name__contains=request.POST["txtSearch"]).values()
-    context = {"categories": category}
+    categories = Category.objects.filter(
+        name__contains=request.POST["txtSearch"]
+    ).values()
+    context = {"categories": categories}
     return render(request, "categories/index.html", context)
 
 
@@ -29,8 +31,8 @@ def create(request):
 def store(request):
     category = Category()
     category.name = request.POST["txtCategoryName"]
-    category.createBy = request.POST["txtCreateBy"]
-    category.updateBy = request.POST["txtUpdateBy"]
+    category.createBy = "1"
+    category.updateBy = "1"
     category.save()
     return redirect("/categories/create")
 
@@ -51,8 +53,8 @@ def edit(request, id):
 def update(request, id):
     category = Category.objects.get(id=id)
     category.name = request.POST["txtCategoryName"]
-    category.createBy = request.POST["txtCreateBy"]
-    category.updateBy = request.POST["txtUpdateBy"]
+    category.createBy = "2"
+    category.updateBy = "2"
     category.save()
     return redirect("/categories/index")
 

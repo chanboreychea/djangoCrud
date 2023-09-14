@@ -45,24 +45,8 @@
                   <td>
                     <a href="/categories/show/{{ col.id }}" class="btn btn-success btn-sm">Show</a>
                     <a href="/categories/edit/{{ col.id }}" class="btn btn-primary btn-sm">Edit</a>
-                    {% comment %} <a href="/categories/destroy/{{ col.id }}" class="btn btn-danger btn-sm" onclick="messagetoConfirmDelete()">Remove</a> {% endcomment %}
-                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">Remove</button>
-
-                    <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Message !!!</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          </div>
-                          <div class="modal-body">Are you want to delete this record?</div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <a href="/categories/destroy/{{ col.id }}" type="button" class="btn btn-primary">OK</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <a href="/categories/destroy/{{ col.id }}" class="btn btn-danger btn-sm">Remove</a>
+    
                   </td>
                 </tr>
               {% endfor %}

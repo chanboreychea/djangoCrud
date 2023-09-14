@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from MyApp import views, category_view, product_view
+from MyApp import views
+from MyApp.controllers import category_view, product_view
 
 urlpatterns = [
     path("", views.homepage, name="/"),
@@ -32,11 +33,11 @@ urlpatterns = [
     path("categories/search", category_view.search),
     # product
     path("products/index", product_view.index, name="/products/index"),
-    path("products/create", category_view.create),
-    path("products/store", category_view.store),
-    path("products/show/<id>", category_view.show, name="categories-show"),
-    path("products/edit/<id>", category_view.edit),
-    path("products/update/<id>", category_view.update),
-    path("products/destroy/<id>", category_view.destroy),
-    path("products/search", category_view.search),
+    path("products/create", product_view.create),
+    path("products/store", product_view.store),
+    path("products/show/<id>", product_view.show, name="categories-show"),
+    path("products/edit/<id>", product_view.edit),
+    path("products/update/<int:id>", product_view.update),
+    path("products/destroy/<int:id>", product_view.destroy),
+    path("products/search", product_view.search),
 ]
