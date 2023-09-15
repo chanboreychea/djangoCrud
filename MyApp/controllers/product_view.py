@@ -69,7 +69,9 @@ def update(request, id):
     product.updateBy = "1"
 
     if len(request.FILES) != 0:
+        os.remove(product.photo.path)
         product.photo = request.FILES["photo"]
+        
 
     product.category_id = request.POST["optCategory"]
     product.save()
@@ -79,5 +81,8 @@ def update(request, id):
 
 @require_GET
 def destroy(request, id):
-    product = Product.objects.get(id=id).delete()
+    product = Product.objects.get(id=id)
+    if len(product.photo) > 0:
+        os.remove(product.photo.path)
+    product.delete()
     return redirect("/products/index")
