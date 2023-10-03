@@ -69,7 +69,9 @@ def update(request, id):
     product.updateBy = "1"
 
     if len(request.FILES) != 0:
-        os.remove(product.photo.path)
+        p1 = Product.objects.get(id=id)
+        if p1.photo:
+            os.remove(product.photo.path)
         product.photo = request.FILES["photo"]
         
 
