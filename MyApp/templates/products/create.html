@@ -32,25 +32,25 @@
               <div class="form-group">
                 <label for="inputupdateby" class="col-sm-2 control-label">Barcode</label>
                 <div class="col-sm-10">
-                  <input type="text" name="txtBarcode" class="form-control" id="inputupdateby" placeholder="Barcode" />
+                  <input type="text" name="txtBarcode" class="form-control" id="inputupdateby" required placeholder="Barcode" />
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputname" class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-10">
-                  <input type="text" name="txtProductName" class="form-control" id="inputname" placeholder="Product Name" />
+                  <input type="text" name="txtProductName" class="form-control" id="inputname" required placeholder="Product Name" />
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputcreateby" class="col-sm-2 control-label">Price</label>
                 <div class="col-sm-10">
-                  <input type="text" name="txtPrice" class="form-control" id="inputcreateby" placeholder="Price" />
+                  <input type="text" name="txtPrice" class="form-control" id="inputcreateby" required placeholder="Price" />
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputupdateby" class="col-sm-2 control-label">Quantity</label>
                 <div class="col-sm-10">
-                  <input type="text" name="txtQuantity" class="form-control" id="inputupdateby" placeholder="Quantity" />
+                  <input type="text" name="txtQuantity" class="form-control" id="inputupdateby" required placeholder="Quantity" />
                 </div>
               </div>
               <div class="form-group">
@@ -63,6 +63,13 @@
             <!-- /.box-body -->
             <div class="box-footer">
               <a href="/products/index" class="btn btn-default">Cancel</a>
+              {% if messages %}
+                <ul class="messages">
+                  {% for message in messages %}
+                    <li>{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
               <button type="submit" class="btn btn-info pull-right">Add</button>
             </div>
             <!-- /.box-footer -->

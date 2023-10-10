@@ -1,4 +1,5 @@
 import os
+from django.contrib import messages
 from django.shortcuts import redirect, render
 
 # Create your views here.
@@ -31,6 +32,11 @@ def create(request):
 def store(request):
     product = Product()
     product.barcode = request.POST["txtBarcode"]
+    p1 = Product.objects.filter(barcode=product.barcode)
+    if p1:
+        messages.warning(request, "Barcode has been already!")
+        return redirect("/products/create")
+
     product.name = request.POST["txtProductName"]
     product.unitPrice = request.POST["txtPrice"]
     product.qtyInstock = request.POST["txtQuantity"]
@@ -40,6 +46,7 @@ def store(request):
         product.photo = request.FILES["photo"]
     product.category_id = request.POST["optCategory"]
 
+    messages.success(request, "Insert Successfully")
     product.save()
     return redirect("/products/create")
 
@@ -73,7 +80,6 @@ def update(request, id):
         if p1.photo:
             os.remove(product.photo.path)
         product.photo = request.FILES["photo"]
-        
 
     product.category_id = request.POST["optCategory"]
     product.save()
@@ -84,7 +90,9 @@ def update(request, id):
 @require_GET
 def destroy(request, id):
     product = Product.objects.get(id=id)
-    if len(product.photo) > 0:
+
+    if product.photo:
         os.remove(product.photo.path)
+
     product.delete()
     return redirect("/products/index")
